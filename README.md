@@ -4,8 +4,8 @@
 
 | Column             | Type    | Options                   |
 |--------------------|---------|---------------------------|
-| nickname           | string  | null: false, UNIQUE: true |
-| email              | string  | null: false, UNIQUE: true |
+| nickname           | string  | null: false               |
+| email              | string  | null: false, unique: true |
 | encrypted_password | string  | null: false               |
 | last_name          | string  | null: false               |
 | first_name         | string  | null: false               |
@@ -49,15 +49,15 @@
 
 ## shopping_addresses テーブル
 
-| Column         | Type       | Options                        |
-|----------------|------------|--------------------------------|
-| postal_code    | string     | null: false                    |
-| prefecture     | string     | null: false                    |
-| municipality   | string     | null: false                    |
-| street_address | string     | null: false                    |
-| building_name  | string     | null: false                    |
-| phone_number   | string     | null: false                    |
-| order          | references | null: false, foreign_key: true |
+| Column                 | Type       | Options                        |
+|------------------------|------------|--------------------------------|
+| postal_code            | string     | null: false                    |
+| origin_region_id       | integer    | null: false                    |
+| municipality           | string     | null: false                    |
+| street_address         | string     | null: false                    |
+| building_name          | string     |                                |
+| phone_number           | string     | null: false                    |
+| order                  | references | null: false, foreign_key: true |
 
 
 ### Association
