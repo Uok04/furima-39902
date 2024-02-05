@@ -16,7 +16,6 @@ class Item < ApplicationRecord
   validates :description, length: { maximum: 1000, message: 'は1000文字以下で入力してください' }
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   validates :price, numericality: { only_integer: true, message: 'は半角数値で入力してください' }
-  validates :user, presence: true
 
   # ジャンルの選択が「---」の時は保存できないようにする
   validates :category_id, numericality: { other_than: 1, message: "can't be blank" }

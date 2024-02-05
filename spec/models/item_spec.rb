@@ -32,31 +32,31 @@ RSpec.describe Item, type: :model do
       end
 
       it 'categoryが空では登録できない' do
-        @item.category_id = '---'
+        @item.category_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
 
       it 'conditionが空では登録できない' do
-        @item.condition_id = '---'
+        @item.condition_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
 
       it 'shopping_fee_burdenが空では登録できない' do
-        @item.shopping_fee_burden_id = '---'
+        @item.shopping_fee_burden_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Shopping fee burden can't be blank")
       end
 
       it 'origin_regionが空では登録できない' do
-        @item.origin_region_id = '---'
+        @item.origin_region_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Origin region can't be blank")
       end
 
       it 'days_to_shipが空では登録できない' do
-        @item.days_to_ship_id = '---'
+        @item.days_to_ship_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Days to ship can't be blank")
       end
@@ -102,7 +102,7 @@ RSpec.describe Item, type: :model do
         item = Item.new(user: nil) 
         expect(item).to_not be_valid
 
-        expect(item.errors[:user]).to include("must exist", "can't be blank")
+        expect(item.errors[:user]).to include("must exist")
       end
     end
   end
