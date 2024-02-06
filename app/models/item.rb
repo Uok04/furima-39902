@@ -29,5 +29,4 @@ class Item < ApplicationRecord
   def validate_image_presence
     errors.add(:image, 'を添付してください') unless image.attached?
   end
-
 end
