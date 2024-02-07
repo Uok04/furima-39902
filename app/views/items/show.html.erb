@@ -21,11 +21,13 @@
         <%= @item.price %>
       </span>
       <span class="item-postage">
-        <%= "配送料負担" %>
+        <%= @item.shopping_fee_burden.name %>
       </span>
     </div>
 
-    <% if user_signed_in? && @item.order == nil %>
+    <%# if user_signed_in? && @item.order == nil %>
+    <% if user_signed_in? %>
+
       <% if current_user == @item.user%>
         <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
         <p class="or-text">or</p>
@@ -39,7 +41,7 @@
     <% end %>
 
     <div class="item-explain-box">
-      <span><%= "商品説明" %></span>
+      <span><%= @item.description %></span>
     </div>
     <table class="detail-table">
       <tbody>
@@ -106,7 +108,7 @@
   </div>
 
   <a href="#" class="another-item"><%= @item.category.name %>をもっと見る</a>
-  
+
 </div>
 
 <%= render "shared/footer" %>
