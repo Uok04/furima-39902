@@ -10,9 +10,9 @@ class User < ApplicationRecord
   validates :nickname, presence: true
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   validates_format_of :password, with: PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください'
-  validates :last_name, presence: true, presence: true,
+  validates :last_name, presence: true,
                         format: { with: /\A[\p{Han}\p{Hiragana}\p{Katakana}\p{blank}ー－]+\z/, message: 'must be in full-width characters' }
-  validates :first_name, presence: true, presence: true,
+  validates :first_name, presence: true,
                          format: { with: /\A[\p{Han}\p{Hiragana}\p{Katakana}\p{blank}ー－]+\z/, message: 'must be in full-width characters' }
   validates :last_name_kana, presence: true,
                              format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'must be in full-width katakana' }
