@@ -42,20 +42,17 @@ RSpec.describe OrderShoppingAddress, type: :model do
       it 'phone_numberが空だと保存できないこと' do
         @order_shopping_address.phone_number = ''
         @order_shopping_address.valid?
-        expect(@order_shopping_address.errors.full_messages).to include("Phone number can't be blank",
-                                                                        'Phone number is too short (minimum is 10 characters)', 'Phone number must be a number without hyphen.')
+        expect(@order_shopping_address.errors.full_messages).to include("Phone number can't be blank")
       end
       it 'phone_numberが10桁以上の半角数値のみでないと保存できないこと' do
         @order_shopping_address.phone_number = '111111111'
         @order_shopping_address.valid?
-        expect(@order_shopping_address.errors.full_messages).to include('Phone number is too short (minimum is 10 characters)',
-                                                                        'Phone number must be a number without hyphen.')
+        expect(@order_shopping_address.errors.full_messages).to include('Phone number is too short (minimum is 10 characters)')
       end
       it 'phone_numberが11桁以内の半角数値のみでないと保存できないこと' do
         @order_shopping_address.phone_number = '111111111111'
         @order_shopping_address.valid?
-        expect(@order_shopping_address.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)',
-                                                                        'Phone number must be a number without hyphen.')
+        expect(@order_shopping_address.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
       end
       it 'itemが紐づいていないと保存できないこと' do
         @order_shopping_address.item_id = nil

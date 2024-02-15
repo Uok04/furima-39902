@@ -5,12 +5,10 @@ class OrdersController < ApplicationController
 
   def index
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
-    # @item = Item.find(params[:item_id])  # 追加
     @order_shopping_address = OrderShoppingAddress.new
   end
 
   def create
-    # @item = Item.find(params[:item_id])
     @order_shopping_address = OrderShoppingAddress.new(order_params)
     if @order_shopping_address.valid?
       pay_item
@@ -44,8 +42,9 @@ class OrdersController < ApplicationController
   end
 
   def redirect_if_not_eligible
-    return unless @item.order.present? || current_user == @item.user
-
-    redirect_to root_path
+    if @item.order.present? || current_user == @item.user
+      redirect_to root_path
+    end
   end
+
 end
