@@ -69,6 +69,11 @@ RSpec.describe OrderShoppingAddress, type: :model do
         @order_shopping_address.valid?
         expect(@order_shopping_address.errors.full_messages).to include("Token can't be blank")
       end
+      it '電話番号に半角数字以外が含まれている場合は購入できない' do
+        @order_shopping_address.phone_number = '090-1234567'
+        @order_shopping_address.valid?
+        expect(@order_shopping_address.errors.full_messages).to include("Phone number must be a number without hyphen.")
+      end
     end
   end
 end
